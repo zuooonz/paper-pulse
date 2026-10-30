@@ -1,0 +1,71 @@
+# Data (local databases, not tracked) — except bundled reference data
+data/*
+!data/reference/
+!data/reference/**
+
+# Python virtual environments
+.venv/
+
+# Frontend dependencies and build output
+node_modules/
+.next/
+
+# Output (generated)
+output/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# Config with secrets
+.env
+config/runtime.yaml
+
+# Local database files (reference databases are tracked)
+*.db
+!data/reference/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Claude Code worktrees / session files
+.claude/
+
+# WorkBuddy session/workspace data
+.workbuddy/
+
+# Temporary / debug artifacts
+tmp/
+.codex_docx_review/
+
+# Runtime PID files
+.service_pids
+
+# Clean internal handoff repository (independent nested Git repository)
+release/
+
+# E2E fixtures generated at test time
+e2e/fixtures/
+
+
+# Python coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# Static demo build output
+frontend/demo-dist/

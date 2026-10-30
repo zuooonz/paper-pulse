@@ -1,0 +1,108 @@
+name: paper-pulse
+
+services:
+  api:
+    build:
+      context: .
+      args:
+        INSTALL_PLAYWRIGHT: ${INSTALL_PLAYWRIGHT:-false}
+    image: paper-pulse-app:latest
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PYTHONPATH: /app/src
+      UVICORN_WORKERS: ${UVICORN_WORKERS:-1}
+      JOURNAL_METRICS_DB: ${JOURNAL_METRICS_DB:-/app/reference/jcr.db}
+      # SQLite stays the default. To use PostgreSQL, set DATABASE_URL to
+      # postgresql+psycopg://paper_pulse:<password>@db:5432/paper_pulse
+      # in .env and start Compose with --profile postgres.
+    ports:
+      - "8000:8000"
+    volumes:
+      - api_data:/app/data
+      - api_output:/app/output
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  worker:
+    image: paper-pulse-app:latest
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PYTHONPATH: /app/src
+      JOURNAL_METRICS_DB: ${JOURNAL_METRICS_DB:-/app/reference/jcr.db}
+    command: ["python", "-m", "worker", "--concurrency", "${WORKER_CONCURRENCY:-1}"]
+    volumes:
+      - api_data:/app/data
+      - api_output:/app/output
+    depends_on:
+      api:
+        condition: service_healthy
+    deploy:
+      replicas: ${WORKER_REPLICAS:-1}
+    restart: unless-stopped
+
+  scheduler:
+    image: paper-pulse-app:latest
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PYTHONPATH: /app/src
+      JOURNAL_METRICS_DB: ${JOURNAL_METRICS_DB:-/app/reference/jcr.db}
+    command: ["python", "-m", "worker.scheduler"]
+    volumes:
+      - api_data:/app/data
+      - api_output:/app/output
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        BACKEND_API_URL: ${BACKEND_API_URL:-http://api:8000}
+        NEXT_PUBLIC_APP_TIMEZONE: ${NEXT_PUBLIC_APP_TIMEZONE:-Asia/Shanghai}
+        NPM_REGISTRY: ${NPM_REGISTRY:-https://registry.npmjs.org}
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      BACKEND_API_URL: ${BACKEND_API_URL:-http://api:8000}
+      NEXT_PUBLIC_APP_TIMEZONE: ${NEXT_PUBLIC_APP_TIMEZONE:-Asia/Shanghai}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  db:
+    image: postgres:16
+    profiles:
+      - postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-paper_pulse}
+      POSTGRES_USER: ${POSTGRES_USER:-paper_pulse}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-postgres-password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  api_data:
+  api_output:
+  postgres_data:

@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+*.db binary
+*.png binary
+*.ico binary
+*.xlsx binary
+*.docx binary
+*.pdf binary
+*.7z binary

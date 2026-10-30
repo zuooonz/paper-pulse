@@ -1,0 +1,10 @@
+{
+  "actor_id": "local:admin",
+  "business_date": "2026-10-29",
+  "timezone": "Asia/Shanghai",
+  "enabled": false,
+  "limit": null,
+  "used": 0,
+  "reserved": 0,
+  "remaining": null
+}

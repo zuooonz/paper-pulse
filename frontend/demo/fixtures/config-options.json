@@ -1,0 +1,436 @@
+{
+  "themes": [
+    {
+      "value": "临床",
+      "label": "临床"
+    },
+    {
+      "value": "成像方法",
+      "label": "成像方法"
+    },
+    {
+      "value": "方法学",
+      "label": "方法学"
+    },
+    {
+      "value": "学术",
+      "label": "学术"
+    }
+  ],
+  "models": [
+    {
+      "value": "auto",
+      "label": "自动选择 (auto)"
+    },
+    {
+      "value": "example-chat-model",
+      "label": "example-chat-model"
+    }
+  ],
+  "multimodal_timings": [
+    {
+      "value": "concurrent",
+      "label": "实时/同步"
+    },
+    {
+      "value": "pre_post",
+      "label": "前后测"
+    },
+    {
+      "value": "sequential",
+      "label": "分时/顺序"
+    }
+  ],
+  "taxonomy": {
+    "dimensions": {
+      "research_topics": {
+        "label": "研究主题",
+        "items": [
+          {
+            "key": "neurodegenerative",
+            "label": "神经退行性疾病",
+            "group": "疾病领域",
+            "aliases": [
+              "神经退行性疾病",
+              "神经退行性",
+              "neurodegenerative disease",
+              "neurodegeneration"
+            ],
+            "patterns": [
+              "神经退行性疾病|神经退行性|neurodegenerative disease|neurodegeneration"
+            ]
+          },
+          {
+            "key": "tumor",
+            "label": "肿瘤",
+            "group": "疾病领域",
+            "aliases": [
+              "肿瘤",
+              "癌症",
+              "tumor",
+              "tumour",
+              "cancer",
+              "oncology"
+            ],
+            "patterns": [
+              "肿瘤|癌症|tumou?r|cancer|oncology"
+            ]
+          },
+          {
+            "key": "cardiovascular",
+            "label": "心血管",
+            "group": "疾病领域",
+            "aliases": [
+              "心血管",
+              "cardiovascular",
+              "cardiac",
+              "vascular"
+            ],
+            "patterns": [
+              "心血管|cardiovascular|cardiac|vascular"
+            ]
+          },
+          {
+            "key": "musculoskeletal",
+            "label": "肌骨",
+            "group": "疾病领域",
+            "aliases": [
+              "肌骨",
+              "肌肉骨骼",
+              "musculoskeletal"
+            ],
+            "patterns": [
+              "肌骨|肌肉骨骼|musculoskeletal"
+            ]
+          },
+          {
+            "key": "methodology",
+            "label": "方法学",
+            "group": "研究方法",
+            "aliases": [
+              "方法学",
+              "成像方法",
+              "定量成像方法",
+              "methodology",
+              "imaging method",
+              "quantitative imaging"
+            ],
+            "patterns": [
+              "方法学|成像方法|定量成像方法|methodology|imaging method|quantitative imaging"
+            ]
+          }
+        ]
+      },
+      "diseases": {
+        "label": "疾病与研究对象",
+        "items": [
+          {
+            "key": "neurodegenerative",
+            "label": "神经退行性疾病",
+            "group": "疾病领域",
+            "aliases": [
+              "神经退行性疾病",
+              "神经退行性",
+              "neurodegenerative disease",
+              "neurodegeneration"
+            ],
+            "patterns": [
+              "神经退行性疾病|神经退行性|neurodegenerative disease|neurodegeneration"
+            ]
+          },
+          {
+            "key": "tumor",
+            "label": "肿瘤",
+            "group": "疾病领域",
+            "aliases": [
+              "肿瘤",
+              "癌症",
+              "tumor",
+              "tumour",
+              "cancer"
+            ],
+            "patterns": [
+              "肿瘤|癌症|tumou?r|cancer"
+            ]
+          },
+          {
+            "key": "cardiovascular",
+            "label": "心血管疾病",
+            "group": "疾病领域",
+            "aliases": [
+              "心血管疾病",
+              "心血管",
+              "cardiovascular disease",
+              "cardiovascular"
+            ],
+            "patterns": [
+              "心血管疾病|心血管|cardiovascular disease|cardiovascular"
+            ]
+          },
+          {
+            "key": "musculoskeletal",
+            "label": "肌骨疾病",
+            "group": "疾病领域",
+            "aliases": [
+              "肌骨疾病",
+              "肌骨",
+              "肌肉骨骼疾病",
+              "musculoskeletal disease"
+            ],
+            "patterns": [
+              "肌骨疾病|肌骨|肌肉骨骼疾病|musculoskeletal disease"
+            ]
+          }
+        ]
+      },
+      "paradigms": {
+        "label": "研究范式",
+        "items": [
+          {
+            "key": "resting_state",
+            "label": "静息态扫描",
+            "group": "扫描方式",
+            "aliases": [
+              "静息态扫描",
+              "静息态",
+              "resting state",
+              "resting-state"
+            ],
+            "patterns": [
+              "静息态(?:扫描|成像)?|resting[- ]state"
+            ]
+          },
+          {
+            "key": "task_based",
+            "label": "任务态",
+            "group": "扫描方式",
+            "aliases": [
+              "任务态",
+              "任务态扫描",
+              "task-based",
+              "task fMRI",
+              "task imaging"
+            ],
+            "patterns": [
+              "任务态(?:扫描|成像)?|task[- ]based|task (?:fMRI|imaging)"
+            ]
+          },
+          {
+            "key": "longitudinal_follow_up",
+            "label": "纵向随访",
+            "group": "研究时间设计",
+            "aliases": [
+              "纵向随访",
+              "随访扫描",
+              "longitudinal follow-up",
+              "longitudinal follow up"
+            ],
+            "patterns": [
+              "纵向随访|随访扫描|longitudinal follow[- ]?up"
+            ]
+          }
+        ]
+      },
+      "study_design": {
+        "label": "研究设计",
+        "items": [
+          {
+            "key": "cross_sectional",
+            "label": "横断面",
+            "group": "观察性研究",
+            "aliases": [
+              "横断面",
+              "横断面研究",
+              "cross-sectional",
+              "cross sectional"
+            ],
+            "patterns": [
+              "横断面|cross[- ]sectional"
+            ]
+          },
+          {
+            "key": "longitudinal",
+            "label": "纵向",
+            "group": "观察性研究",
+            "aliases": [
+              "纵向",
+              "纵向研究",
+              "longitudinal",
+              "follow-up study"
+            ],
+            "patterns": [
+              "纵向研究|longitudinal|follow[- ]up study"
+            ]
+          },
+          {
+            "key": "case_control",
+            "label": "病例对照",
+            "group": "观察性研究",
+            "aliases": [
+              "病例对照",
+              "case-control",
+              "case control"
+            ],
+            "patterns": [
+              "病例对照|case[- ]control"
+            ]
+          },
+          {
+            "key": "methodological_validation",
+            "label": "方法学验证",
+            "group": "方法学研究",
+            "aliases": [
+              "方法学验证",
+              "方法验证",
+              "methodological validation",
+              "method validation"
+            ],
+            "patterns": [
+              "方法学验证|方法验证|methodological validation|method validation"
+            ]
+          }
+        ]
+      },
+      "multimodal": {
+        "label": "多模态技术",
+        "items": [
+          {
+            "key": "pet",
+            "label": "PET",
+            "group": "影像",
+            "aliases": [
+              "PET",
+              "positron emission tomography",
+              "正电子发射断层扫描"
+            ],
+            "patterns": [
+              "\\bPET\\b|positron emission tomography|正电子发射断层扫描"
+            ]
+          },
+          {
+            "key": "ct",
+            "label": "CT",
+            "group": "影像",
+            "aliases": [
+              "CT",
+              "computed tomography",
+              "computed tomographic",
+              "计算机断层扫描"
+            ],
+            "patterns": [
+              "\\bCT\\b|computed tomograph|计算机断层扫描"
+            ]
+          },
+          {
+            "key": "ultrasound",
+            "label": "超声",
+            "group": "影像",
+            "aliases": [
+              "超声",
+              "超声成像",
+              "ultrasound",
+              "ultrasonography"
+            ],
+            "patterns": [
+              "超声|ultrasound|ultrasonography"
+            ]
+          },
+          {
+            "key": "eeg",
+            "label": "EEG",
+            "group": "电生理",
+            "aliases": [
+              "EEG",
+              "electroencephalography",
+              "electroencephalogram",
+              "脑电"
+            ],
+            "patterns": [
+              "\\bEEG\\b|electroencephal|脑电"
+            ]
+          }
+        ]
+      },
+      "multimodal_presence": {
+        "label": "是否联用",
+        "items": [
+          {
+            "key": true,
+            "value": "true",
+            "label": "是",
+            "aliases": [
+              "true",
+              "是"
+            ]
+          },
+          {
+            "key": false,
+            "value": "false",
+            "label": "否",
+            "aliases": [
+              "false",
+              "否"
+            ]
+          }
+        ]
+      },
+      "multimodal_timing": {
+        "label": "联用时序",
+        "items": [
+          {
+            "key": "concurrent",
+            "value": "concurrent",
+            "label": "实时/同步",
+            "aliases": [
+              "concurrent",
+              "实时/同步"
+            ]
+          },
+          {
+            "key": "pre_post",
+            "value": "pre_post",
+            "label": "前后测",
+            "aliases": [
+              "pre_post",
+              "前后测"
+            ]
+          },
+          {
+            "key": "sequential",
+            "value": "sequential",
+            "label": "分时/顺序",
+            "aliases": [
+              "sequential",
+              "分时/顺序"
+            ]
+          }
+        ]
+      },
+      "neuroscience_subtopics": {
+        "label": "补充分类",
+        "items": []
+      },
+      "tags": {
+        "label": "标签",
+        "items": [],
+        "groups": {},
+        "aliases": {}
+      }
+    },
+    "multimodal_timings": null
+  },
+  "taxonomy_labels": {
+    "research_topics": "研究主题",
+    "diseases": "疾病与研究对象",
+    "paradigms": "研究范式",
+    "study_design": "研究设计",
+    "multimodal": "多模态技术",
+    "multimodal_presence": "是否联用",
+    "multimodal_timing": "联用时序",
+    "neuroscience_subtopics": "补充分类",
+    "tags": "标签"
+  },
+  "generation": {
+    "require_target_entity": true
+  }
+}

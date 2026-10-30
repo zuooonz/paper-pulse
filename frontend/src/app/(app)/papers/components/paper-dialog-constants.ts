@@ -1,0 +1,5 @@
+export const PAPER_DIALOG_SCROLL = "max-h-[85dvh] overflow-y-auto scrollbar-none"
+export const PAPER_DIALOG_BODY = "flex flex-col gap-6 py-1"
+export const PAPER_DIALOG_FIELD = "flex flex-col gap-1"
+export const PAPER_DIALOG_CONTROL = "h-9 w-full data-[size=default]:h-9"
+export const PAPER_DIALOG_SECTION = "rounded-lg border p-4"

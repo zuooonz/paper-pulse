@@ -1,0 +1,74 @@
+key: qmri
+name: 定量磁共振成像（qMRI）
+short_name: qMRI
+aliases:
+  - quantitative MRI
+  - quantitative magnetic resonance imaging
+  - relaxometry
+  - T1 mapping
+  - T2 mapping
+  - T2* mapping
+  - DWI
+  - DTI
+  - MT
+  - MTR
+  - QSM
+  - ASL
+relevance_keywords:
+  - quantitative MRI
+  - quantitative magnetic resonance
+  - relaxometry
+  - T1 mapping
+  - T2 mapping
+  - T2* mapping
+  - T1 relaxation
+  - T2 relaxation
+  - diffusion-weighted imaging
+  - diffusion tensor imaging
+  - magnetization transfer
+  - magnetization transfer ratio
+  - quantitative susceptibility mapping
+  - arterial spin labeling
+  - multiparametric MRI
+search:
+  pubmed_query: >-
+    ("quantitative MRI"[Title/Abstract] OR "quantitative magnetic resonance"[Title/Abstract]
+    OR relaxometry[Title/Abstract] OR "T1 mapping"[Title/Abstract] OR "T2 mapping"[Title/Abstract]
+    OR "T2* mapping"[Title/Abstract] OR "diffusion tensor imaging"[Title/Abstract]
+    OR "diffusion-weighted imaging"[Title/Abstract] OR "magnetization transfer"[Title/Abstract]
+    OR "quantitative susceptibility mapping"[Title/Abstract] OR "arterial spin labeling"[Title/Abstract])
+  epmc_query: >-
+    ("quantitative MRI" OR "quantitative magnetic resonance" OR relaxometry OR "T1 mapping"
+    OR "T2 mapping" OR "T2* mapping" OR "diffusion tensor imaging" OR "diffusion-weighted imaging"
+    OR "magnetization transfer" OR "quantitative susceptibility mapping" OR "arterial spin labeling")
+  gs_queries:
+    - '"quantitative MRI" OR relaxometry OR "T1 mapping" OR "T2 mapping"'
+    - '"diffusion tensor imaging" OR "diffusion-weighted imaging" OR "quantitative susceptibility mapping"'
+    - '"magnetization transfer" OR "arterial spin labeling" quantitative MRI'
+  openalex_queries:
+    - quantitative MRI relaxometry T1 T2 mapping
+    - diffusion tensor imaging quantitative MRI
+    - quantitative susceptibility mapping magnetization transfer arterial spin labeling
+  semantic_query: >-
+    quantitative MRI OR relaxometry OR T1 mapping OR T2 mapping OR diffusion tensor imaging
+    OR quantitative susceptibility mapping OR magnetization transfer OR arterial spin labeling
+  exclude_terms:
+    - infrared thermography
+    - hyperspectral imaging
+prompt:
+  domain_intro: >-
+    定量磁共振成像通过定量参数图描述组织特性，常见方向包括 T1/T2/T2* mapping、relaxometry、DWI/DTI、MT/MTR、QSM 与 ASL。
+    解读时应依据论文实际采用的序列、参数、模型和验证方式，谨慎说明测量含义及适用边界。
+  required_terms: []
+  strengths_section_title: qMRI 方法适用条件分析
+default_tags:
+  - qMRI
+  - 医学影像
+  - 论文解读
+generation:
+  require_target_entity: true
+video_style:
+  prompts:
+    professional: "学术专业风格：利用3D医学动画、数据可视化、脑部扫描影像等素材，营造科研权威感。"
+    popular_science: "科普风格：用简洁的动画图解 + 大字幕，适合社交媒体传播，强调视觉冲击力和易懂性。"
+    news: "新闻播报风格：动态文字 + 数据图表 + 实拍风格画面，适合资讯类短视频平台。"

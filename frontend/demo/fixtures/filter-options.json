@@ -1,0 +1,78 @@
+{
+  "review_outcomes": [
+    {
+      "value": "approved",
+      "count": 2
+    },
+    {
+      "value": "unreviewed",
+      "count": 2
+    }
+  ],
+  "has_pdf": [
+    {
+      "value": false,
+      "count": 3
+    },
+    {
+      "value": true,
+      "count": 1
+    }
+  ],
+  "metadata_complete": [
+    {
+      "value": false,
+      "count": 2
+    },
+    {
+      "value": true,
+      "count": 2
+    }
+  ],
+  "countries": [],
+  "provinces": [],
+  "cities": [],
+  "institution_types": [],
+  "departments": [],
+  "diseases": [],
+  "research_topics": [],
+  "neuroscience_subtopics": [],
+  "age_range": {
+    "min": null,
+    "max": null
+  },
+  "study_designs": [],
+  "paradigms": [],
+  "multimodal": [],
+  "multimodal_techniques": [],
+  "multimodal_timings": [],
+  "tag_categories": [],
+  "classification_catalogs": {
+    "research_topics": [],
+    "research_topic_groups": [],
+    "neuroscience_subtopics": [],
+    "neuroscience_subtopic_groups": [],
+    "diseases": [],
+    "disease_groups": [],
+    "study_designs": [],
+    "study_design_groups": [],
+    "paradigms": [],
+    "paradigm_groups": [],
+    "multimodal_methods": [],
+    "multimodal_method_groups": [],
+    "multimodal_presence": [],
+    "tags": [],
+    "tag_groups": [],
+    "dimension_labels": {
+      "research_topics": "研究主题",
+      "diseases": "疾病与研究对象",
+      "paradigms": "研究范式",
+      "study_design": "研究设计",
+      "multimodal": "多模态技术",
+      "multimodal_presence": "是否联用",
+      "multimodal_timing": "联用时序",
+      "neuroscience_subtopics": "补充分类",
+      "tags": "标签"
+    }
+  }
+}

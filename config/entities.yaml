@@ -1,0 +1,71 @@
+# 课题目录（实体）：用于识别 qMRI 分析软件，并保留自制设备识别。
+target: qmrlab
+
+entities:
+  qmrlab:
+    label: qMRLab
+    devices: []
+    software: [qMRLab, "qMRLab toolbox", "qMRLab software"]
+    company: []
+    extra: []
+    links:
+      homepage: https://qmrlab.org
+      repository: https://github.com/qMRLab/qMRLab
+    citation: "Karakuzu A, et al. qMRLab: Quantitative MRI analysis, under one umbrella. J Open Source Softw. 2020;5(53):2343. doi:10.21105/joss.02343."
+    citation_dois:
+      - 10.21105/joss.02343
+    search:
+      pmc_query: '("qMRLab" OR "qMRLab toolbox" OR "qMRLab software") AND (quantitative MRI OR relaxometry)'
+      epmc_query: '("qMRLab" OR "qMRLab toolbox" OR "qMRLab software") AND (quantitative MRI OR relaxometry)'
+      gs_queries:
+        - '"qMRLab" quantitative MRI relaxometry'
+
+  hmri_toolbox:
+    label: hMRI toolbox
+    devices: []
+    software: ["hMRI toolbox", hMRI-toolbox, "hMRI toolbox for SPM"]
+    conditional_matches:
+      - field: software
+        all_terms: [hMRI, SPM]
+    company: []
+    extra: []
+    links:
+      homepage: https://hmri.info
+      repository: https://github.com/hMRI-group/hMRI-toolbox
+    citation: "Tabelow K, et al. hMRI – A toolbox for quantitative MRI in neuroscience and clinical research. NeuroImage. 2019;194:191-210. doi:10.1016/j.neuroimage.2019.01.029."
+    citation_dois:
+      - 10.1016/j.neuroimage.2019.01.029
+    search:
+      pmc_query: '("hMRI toolbox" OR "hMRI-toolbox" OR (hMRI AND SPM)) AND (quantitative MRI OR relaxometry)'
+      epmc_query: '("hMRI toolbox" OR "hMRI-toolbox" OR (hMRI AND SPM)) AND (quantitative MRI OR relaxometry)'
+      gs_queries:
+        - '("hMRI toolbox" OR "hMRI-toolbox" OR (hMRI SPM)) quantitative MRI'
+
+confusions: {}
+
+custom_built_label: Custom-built
+custom_built_patterns:
+  - 'custom[-\s]built\s+(?:MRI\s+)?(?:scanner|system|device)'
+  - 'in[-\s]house\s+(?:built\s+)?(?:MRI\s+)?(?:scanner|system|device)'
+  - 'home[-\s]built\s+(?:MRI\s+)?(?:scanner|system|device)'
+  - 'laboratory[-\s]built\s+(?:MRI\s+)?(?:scanner|system|device)'
+  - 'custom[-\s]designed\s+(?:MRI\s+)?(?:scanner|system|device)'
+  - '\bcustom[-\s]built\b'
+  - '\bin[-\s]house\b.{0,80}\b(?:scanner|system|device)\b'
+
+display_map:
+  qmrlab: qMRLab
+  hmri_toolbox: hMRI toolbox
+  custom_built: Custom-built
+
+scoring:
+  device: 3
+  software: 2
+  company: 2
+  extra: 1
+  min_score: 2
+  custom_built: 5
+  high_confidence: 6
+  medium_confidence: 4
+  ambiguity_ratio: 0.7
+  context_bonus: 1

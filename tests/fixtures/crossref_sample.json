@@ -1,0 +1,35 @@
+{
+  "DOI": "10.5555/qmri-mapping-test",
+  "title": ["Synthetic qMRI T1 and T2 tissue-mapping benchmark"],
+  "container-title": ["Journal of Imaging Tests"],
+  "ISSN": ["0000-0000"],
+  "eISSN": ["0000-0001"],
+  "published-print": {
+    "date-parts": [[2024, 6]]
+  },
+  "author": [
+    {
+      "given": "Alex",
+      "family": "Example",
+      "sequence": "first",
+      "affiliation": [{"name": "Example Imaging Institute"}]
+    },
+    {
+      "given": "Riley",
+      "family": "Sample",
+      "sequence": "additional",
+      "affiliation": [{"name": "Example Imaging Institute"}]
+    },
+    {
+      "given": "Jordan",
+      "family": "Researcher",
+      "sequence": "additional",
+      "affiliation": [
+        {"name": "Example Imaging Institute"},
+        {"name": "Quantitative MRI Research Centre"}
+      ],
+      "ORCID": "https://orcid.org/0000-0002-1825-0097"
+    }
+  ],
+  "type": "journal-article"
+}

@@ -1,0 +1,7 @@
+word:
+  theme:
+    primary: "#005387"
+    secondary: "#00375B"
+    accent: "#1479B0"
+    gray: "#627482"
+    light_gray: "#EFF6FB"

@@ -1,0 +1,154 @@
+# 复制为 runtime.yaml 后按需调整；敏感配置通过环境变量提供。
+
+# 应用基本设置：时区可由 APP_TIMEZONE 覆盖；跨域列表也可由 CORS_ORIGINS 覆盖。
+app:
+  timezone: Asia/Shanghai
+cors_origins:
+  - http://localhost:3000
+  - http://127.0.0.1:3000
+
+# 文件根目录。相对目录均以 root 为基准；STORAGE_ROOT、PDF_ROOT、OUTPUT_ROOT 可覆盖相应路径，output_root 用于生成文件。
+storage:
+  root: data
+  pdf_root: pdf
+  images_root: images
+  cache_root: cache
+  temp_root: tmp
+  output_root: output
+
+# 可连接任意 OpenAI Chat Completions 兼容服务。
+provider:
+  base_url: ${LLM_BASE_URL}
+  api_key: ${LLM_API_KEY}
+  model: ${LLM_MODEL}
+
+# 摘要与翻译增强设置。
+abstract_enrichment:
+  enabled: false
+  translate_zh: false
+  model: ${LLM_MODEL}
+
+# 钉钉登录集成，默认关闭；启用时配置相应凭据。
+dingtalk:
+  enabled: false
+  corp_id: ${DINGTALK_CORP_ID}
+  client_id: ${DINGTALK_CLIENT_ID}
+  client_secret: ${DINGTALK_CLIENT_SECRET}
+  agent_id: ${DINGTALK_AGENT_ID}
+  # 部门到通用角色的可选映射；未匹配时使用 default_role。
+  role_mapping:
+    departments: {}
+    default_username: viewer
+    default_role: viewer
+
+# 本地登录用户示例。每个用户使用独立密码，JWT 密钥应设置为随机长值。
+# 密码可通过 `python -m api.hash_password` 生成 PBKDF2 哈希；迁移完成后关闭明文兼容。
+auth:
+  jwt_secret: ${JWT_SECRET}
+  jwt_algorithm: HS256
+  jwt_expire_days: 30
+  allow_plaintext_passwords: false
+  local_users:
+    admin:
+      password: ${LOCAL_ADMIN_PASSWORD}
+      name: 管理员
+      role: admin
+    reviewer:
+      password: ${LOCAL_REVIEWER_PASSWORD}
+      name: 审核员
+      role: reviewer
+    viewer:
+      password: ${LOCAL_VIEWER_PASSWORD}
+      name: 查看者
+      role: viewer
+    limited:
+      password: ${LOCAL_LIMITED_PASSWORD}
+      name: 受限用户
+      role: limited
+  roles:
+    admin: admin
+    reviewer: reviewer
+    viewer: viewer
+    limited: limited
+
+# 文献 PDF 提取配置；远程提取服务保持关闭，按需启用并填写令牌。
+extractor:
+  default: pymupdf
+  fallback_to_pymupdf: true
+  keep_mineru_raw: false
+  mineru:
+    enabled: false
+    mode: remote
+    backend: pipeline
+    method: auto
+    lang: auto
+    device_mode: cpu
+    enable_formula_rec: true
+    is_scan: false
+    min_image_bytes: 8192
+    timeout_seconds: 600
+    stall_timeout_seconds: 120
+    base_url: ${MINERU_BASE_URL}
+    api_token: ${MINERU_API_TOKEN}
+
+# 文献 API 地址；默认值为公开服务地址，可用对应环境变量替换。
+api_endpoints:
+  elsevier_base_url: https://api.elsevier.com
+  ieee_base_url: https://ieeexploreapi.ieee.org/api/v1
+  ieee_xplore_base_url: https://ieeexplore.ieee.org
+  wiley_base_url: https://api.wiley.com/onlinelibrary/tdm/v1
+  springer_base_url: https://link.springer.com/content/pdf
+  semantic_scholar_base_url: https://api.semanticscholar.org/graph/v1
+  unpaywall_base_url: https://api.unpaywall.org/v2
+  crossref_base_url: https://api.crossref.org
+  ncbi_base_url: https://eutils.ncbi.nlm.nih.gov/entrez/eutils
+  amap_base_url: https://restapi.amap.com/v3
+  baidu_map_base_url: https://api.map.baidu.com
+  europe_pmc_base_url: https://www.ebi.ac.uk/europepmc/webservices/rest
+  europe_pmc_article_base_url: https://europepmc.org
+  arxiv_base_url: https://arxiv.org/pdf
+  doi_resolver_base_url: https://doi.org
+  mdpi_base_url: https://mdpi-res.com
+  nominatim_base_url: https://nominatim.openstreetmap.org
+  openalex_base_url: https://api.openalex.org
+  dingtalk_base_url: https://oapi.dingtalk.com
+  dingtalk_open_api_base_url: https://api.dingtalk.com
+
+# 文献 API 凭据与联系邮箱；未设置时对应数据源按需跳过。
+semantic_scholar:
+  api_key: ${SEMANTIC_SCHOLAR_API_KEY}
+springer:
+  api_key: ${SPRINGER_API_KEY}
+pdf_download:
+  elsevier_api_key: ${ELSEVIER_API_KEY}
+  ieee_api_key: ${IEEE_API_KEY}
+  wiley_tdm_token: ${WILEY_TDM_TOKEN}
+  unpaywall_email: ${UNPAYWALL_EMAIL}
+  request_interval: 1.0
+crossref:
+  mailto: ${CROSSREF_MAILTO}
+ncbi:
+  api_key: ${NCBI_API_KEY}
+  email: ${NCBI_EMAIL}
+http:
+  contact_email: ${CONTACT_EMAIL}
+
+# 地图服务凭据；仅在启用机构地理编码时需要。
+maps:
+  amap_api_key: ${AMAP_API_KEY}
+  baidu_map_ak: ${BAIDU_MAP_AK}
+
+# 可选视频生成服务配置，默认关闭。
+video_generation:
+  enabled: false
+  api_url: ${VIDEO_API_URL}
+  status_url_template: ${VIDEO_STATUS_URL_TEMPLATE}
+  api_token: ${VIDEO_API_TOKEN}
+  model: ${VIDEO_MODEL}
+
+# 单一应用数据库；相对 SQLite 路径以工作区为基准。
+database:
+  url: sqlite:///data/app.db
+  pool_size: 10
+  max_overflow: 20
+  pool_recycle: 1800

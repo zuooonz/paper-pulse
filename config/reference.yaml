@@ -1,0 +1,37 @@
+# 参考数据目录。数据文件由使用者提供；无需在安装或导入模块时下载。
+journal_metrics:
+  path: data/reference/jcr.db # JOURNAL_METRICS_DB 可覆盖
+  fuzzy_threshold: 0.85
+  tables:
+    jcr:
+      table: JCR2025
+      journal: Journal
+      issn: ISSN
+      eissn: EISSN
+      impact_factor: "IF(2025)"
+      quartile: "IF Quartile(2025)_1"
+    cas:
+      table: FQBJCR2025
+      journal: Journal
+      issn_eissn: "ISSN/EISSN"
+      category: 大类
+      partition: 大类分区
+      top: Top
+    emerging:
+      table: XR2026
+      journal: Journal
+      issn: ISSN
+      eissn: EISSN
+      partition: 大类新锐分区
+      top: Top
+    warnings:
+      - table: GJQKYJMD2025
+        journal: Journal
+        reason: "预警原因（2025）"
+      - table: GJQKYJMD2024
+        journal: Journal
+        reason: "预警原因（2024）"
+  source:
+    name: ShowJCR
+    url: https://github.com/hitfyd/ShowJCR
+    license: GPL-3.0

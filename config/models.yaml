@@ -1,0 +1,13 @@
+# 中性模型示例：可填写任意兼容 OpenAI Chat Completions 的服务所提供的模型名。
+models:
+  - id: example-chat-model
+    tier: general
+    quality: standard
+    cost: standard
+    timeout_seconds: 300
+    max_output_tokens: 16000
+    thinking: false
+
+routing:
+  default_auto_sequence:
+    - example-chat-model

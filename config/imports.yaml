@@ -1,0 +1,19 @@
+# Excel 导入字段映射，兼容常见 WoS 与 EndNote 导出表头。
+doi:
+  mark_as_target: false
+
+excel:
+  sheet_name: Sheet1
+  columns:
+    doi: [DOI, doi]
+    title: [Article Title, Title]
+    journal: [Source Title, Journal, Secondary Title]
+    year: [Publication Year, Year]
+    authors: [Authors, Author]
+    abstract: [Abstract]
+    volume: [Volume]
+    issue: [Issue]
+    start_page: [Start Page, Beginning Page]
+    end_page: [End Page]
+    pmid: [Pubmed Id, PMID]
+    document_type: [Document Type, Type]
